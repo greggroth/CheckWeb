@@ -19,3 +19,5 @@ to make sure the crontab looks right then
     whenever -w
 
 to update the crontab.
+
+When a change is detected, an e-mail will be sent out.  Either way, the output will be logged to 'cron_log.log'.

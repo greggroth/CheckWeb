@@ -6,7 +6,7 @@ require "CGI"
 ####  User updatable  ####
 # update the next three lines to grab the element from the page you want to monitor
 url = "https://authors.aps.org/cgi-bin/wvman?acc=LP12682&auth=Rothmeier"
-status_filename = './lib/status'
+status_filename = './lib/.status'
 current_status = Nokogiri::HTML(open(url)).xpath("//br/following-sibling::text()").first.to_html.gsub(/\n/, '')
 ##########################
 
