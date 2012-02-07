@@ -4,7 +4,8 @@
 # http://en.wikipedia.org/wiki/Cron
 
 set :output, "./cron_log.log"
+job_type :ruby, 'cd :path && ruby :task :output'
 
-every 1.minute do
-  command "ruby ./lib/check_web.rb"
+every 30.minutes do
+  ruby "./lib/check_web.rb"
 end

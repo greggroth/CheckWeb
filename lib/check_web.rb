@@ -5,16 +5,15 @@ require "CGI"
 
 url = "https://authors.aps.org/cgi-bin/wvman?acc=LP12682&auth=Rothmeier"
 status_filename = './lib/status'
-# current_status = Nokogiri::HTML(open(url)).xpath("//br/following-sibling::text()").first.to_html.gsub(/\n/, '')
-current_status = "With editors\n\n".gsub(/\n/, '')
+current_status = Nokogiri::HTML(open(url)).xpath("//br/following-sibling::text()").first.to_html.gsub(/\n/, '')
 
 File.new(status_filename, "w") unless File::exists?(status_filename)
 last_status = IO.readlines(status_filename)
 
 if current_status == last_status[0]
-  puts "Nothing new"
+  puts "[#{Time.now}]   Nothing new"
 else
-  puts "New Status:  #{current_status}"
+  puts "[#{Time.now}]   New Status:  #{current_status}"
   Pony.mail(
       to: 'greggroth@gmail.com', 
       from: 'greggroth@gmail.com', 
