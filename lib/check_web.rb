@@ -1,7 +1,6 @@
 require "open-uri"
 require "nokogiri"
 require "pony"
-require "CGI"
 
 ####  User updatable  ####
 # update the next three lines to grab the element from the page you want to monitor
@@ -22,7 +21,7 @@ else
       to: 'greggroth@gmail.com', 
       from: 'greggroth@gmail.com', 
       subject: 'Your Paper Status Has Changed!', 
-      body: "New Status!!   #{CGI.unescapeHTML(current_status)}\n#{url}",
+      body: "New Status!!   #{current_status}\n#{url}",
       via: :sendmail)
     #########################################
   IO.write(status_filename, current_status)
